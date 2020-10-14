@@ -10,6 +10,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @AllArgsConstructor // Todos argumentos para o construtor
 @NoArgsConstructor // Construtor sem argumentos
@@ -26,16 +27,14 @@ public class Todo {
     private String descricaoTodo;
 
     @Column(name="dt_insert")
-    @JsonFormat(pattern = "dd/MM/yyyy")
-    private LocalDate dataInsercao;
+    @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
+    private LocalDateTime dataInsercao;
 
     @Column(name="dt_last_update")
-    @JsonFormat(pattern = "dd/MM/yyyy")
-    private LocalDate ultimaAtualizacao;
+    @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
+    @UpdateTimestamp
+    private LocalDateTime ultimaAtualizacao;
 
     @PrePersist
-    private void setDateNow() { setDataInsercao(LocalDate.now()); }
-
-    @UpdateTimestamp
-    private void setLastUpdate() { setUltimaAtualizacao(LocalDate.now()); }
+    private void setDateNow() { setDataInsercao(LocalDateTime.now()); }
 }
