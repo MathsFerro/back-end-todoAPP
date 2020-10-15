@@ -23,8 +23,14 @@ public class Todo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name="ds_todo", nullable = false)
+    @Column(name="title", nullable = false)
+    private String title;
+
+    @Column(name="ds_todo")
     private String descricaoTodo;
+
+    @Column(name="is_concluded")
+    private Boolean isConcluded;
 
     @Column(name="dt_insert")
     @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")

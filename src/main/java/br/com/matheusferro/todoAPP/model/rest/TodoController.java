@@ -13,6 +13,8 @@ import java.util.List;
 
 @RestController // Vai enviar e receber HTTP
 @RequestMapping("/api/todos") // Mapear a url
+
+@CrossOrigin("http://localhost:4200")
 public class TodoController {
 
     @Autowired
